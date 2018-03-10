@@ -169,3 +169,14 @@ def plot_2d_model(model, x, y):
     formatter = plt.FuncFormatter(lambda val, loc: label_array[val])
     plt.clim(0, 9)
     plt.colorbar(scatter, ticks=[0,1,2,3,4,5,6,7,8,9], format=formatter)
+    
+    
+# Helper to plot convolution with one filter
+def visualise_conv(image, model):
+    print(image.shape)
+    image_batch = np.expand_dims(image, axis=0)
+    conv_image = model.predict(image_batch)    
+    conv_image = np.squeeze(conv_image, axis=0)
+    conv_image = conv_image.reshape(conv_image.shape[:2])
+    print(conv_image.shape)
+    plt.imshow(conv_image, cmap="jet")
