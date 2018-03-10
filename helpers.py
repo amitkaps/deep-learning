@@ -2,8 +2,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 import tensorflow as tf
 import keras
-from tensorflow.examples.tutorials.mnist import input_data
+#from tensorflow.examples.tutorials.mnist import input_data
+from keras.datasets import fashion_mnist
 import os
+
 
 # Helper to get the labels for each class of Fashion Mnist
 def fashion_mnist_label(): 
@@ -47,16 +49,18 @@ def create_embedding(data, name, sample):
     """
     
     # Create path and file names
-    data_path = "data/" + data + "/"
+    
+    data_path = "/data/" + data + "/"
     log_path = "logs/" + name + "/"
     sprite_file = name + ".png"
     path_for_sprites =  os.path.join(log_path, sprite_file)
     path_for_metadata =  os.path.join(log_path,'metadata.tsv')
     
     # Read the data
-    inputs = input_data.read_data_sets(data_path, one_hot=False)
-    batch_xs, batch_ys = inputs.train.next_batch(sample)
-    #batch_xs, batch_ys = x_train[:sample], y_train[:sample] 
+    #inputs = input_data.read_data_sets(data_path, one_hot=False)
+    #batch_xs, batch_ys = inputs.train.next_batch(sample)
+    (x_train, y_train), (x_test, y_test) = fashion_mnist.load_data()
+    batch_xs, batch_ys = x_train[:sample], y_train[:sample] 
     
     # Create the embedding variable and summary writer
     embedding_var = tf.Variable(batch_xs, name=name)
@@ -92,7 +96,6 @@ def create_embedding(data, name, sample):
 
     
     # Create metadata
-    #open(path_for_metadata, 'a').close()
     with open(path_for_metadata,'w') as f:
         f.write("Index\tLabel\n")
         for index,label in enumerate(batch_ys):
