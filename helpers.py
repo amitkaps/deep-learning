@@ -1,8 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import tensorflow as tf
-from tensorflow.examples.tutorials.mnist import input_data
+import keras
+#from tensorflow.examples.tutorials.mnist import input_data
+from keras.datasets import fashion_mnist
 import os
+
 
 # Helper to get the labels for each class of Fashion Mnist
 def fashion_mnist_label(): 
@@ -46,16 +49,18 @@ def create_embedding(data, name, sample):
     """
     
     # Create path and file names
-    data_path = "data/" + data + "/"
+    
+    data_path = "/data/" + data + "/"
     log_path = "logs/" + name + "/"
     sprite_file = name + ".png"
     path_for_sprites =  os.path.join(log_path, sprite_file)
     path_for_metadata =  os.path.join(log_path,'metadata.tsv')
     
     # Read the data
-    inputs = input_data.read_data_sets(data_path, one_hot=False)
-    batch_xs, batch_ys = inputs.train.next_batch(sample)
-    #batch_xs, batch_ys = x_train[:sample], y_train[:sample] 
+    #inputs = input_data.read_data_sets(data_path, one_hot=False)
+    #batch_xs, batch_ys = inputs.train.next_batch(sample)
+    (x_train, y_train), (x_test, y_test) = fashion_mnist.load_data()
+    batch_xs, batch_ys = x_train[:sample], y_train[:sample] 
     
     # Create the embedding variable and summary writer
     embedding_var = tf.Variable(batch_xs, name=name)
@@ -91,7 +96,6 @@ def create_embedding(data, name, sample):
 
     
     # Create metadata
-    #open(path_for_metadata, 'a').close()
     with open(path_for_metadata,'w') as f:
         f.write("Index\tLabel\n")
         for index,label in enumerate(batch_ys):
@@ -103,3 +107,79 @@ def create_embedding(data, name, sample):
     Run the following command from the terminal
     
     tensorboard --logdir=%s""" % (log_path, log_path))
+    
+    
+# Helper for saving batch-wise 
+class MetricHistory(keras.callbacks.Callback):
+    def on_train_begin(self, logs={}):
+        self.losses = []
+        self.accuracy = []
+
+    def on_batch_end(self, batch, logs={}):
+        self.losses.append(logs.get('loss'))
+        self.accuracy.append(logs.get('acc'))
+
+        
+        
+# Helper to plot prediction
+def plot_prediction(index, x_test, y_test, input_data, model):
+    label_array = ["T-shirt/top", "Trouser", "Pullover", "Dress",  "Coat", 
+               "Sandal", "Shirt", "Sneaker", "Bag", "Ankle boot"]
+    proba = model.predict_proba(input_data)
+    fig = plt.figure(figsize=(4, 6)) 
+    plt.subplot(211)
+    plt.imshow(x_test[index], cmap="gray")
+    plt.title(label_array[y_test[index]])
+    
+    plt.subplot(212)
+    plt.barh(y=range(len(proba[index])), width=proba[index], tick_label=label_array)
+    plt.xlim(0,1)
+    
+    plt.tight_layout()
+    
+    
+# Helper to plot 2d models
+def plot_2d_model(model, x, y):
+
+    # Calculate the Classification Boundaries
+    x1_min, x1_max = x[:,0].min(), x[:,0].max()
+    x2_min, x2_max = x[:,1].min(), x[:,1].max()
+    xx1, xx2 = np.meshgrid(
+        np.arange(x1_min, x1_max, (x1_max - x1_min)/100), 
+        np.arange(x2_min, x2_max, (x2_max - x2_min)/100))
+    Z = model.predict_classes(np.c_[xx1.ravel(), xx2.ravel()])
+    Z = Z.reshape(xx1.shape)
+    
+    # Set the 2d points
+    plt.figure(figsize=(16,6))
+    cmap = plt.cm.get_cmap('plasma', 10)
+    
+    plt.subplot(121)
+    scatter = plt.scatter(x = x[:,0], y = x[:,1], c = y, s = 0.5, cmap=cmap, alpha = 0.3)
+    plt.xlim(x1_min, x1_max)
+    plt.ylim(x2_min, x2_max)
+    
+    plt.subplot(122)
+    cs = plt.contourf(xx1, xx2, Z, cmap=cmap, alpha = 0.6)
+    plt.xlim(x1_min, x1_max)
+    plt.ylim(x2_min, x2_max)
+    plt.clim(0, 9)
+    
+    # Format the colorbar
+    label_array = ["T-shirt/top", "Trouser", "Pullover", "Dress",  "Coat", 
+               "Sandal", "Shirt", "Sneaker", "Bag", "Ankle boot"]
+    ticks = range(len(label_array))
+    formatter = plt.FuncFormatter(lambda val, loc: label_array[val])
+    plt.clim(0, 9)
+    plt.colorbar(scatter, ticks=[0,1,2,3,4,5,6,7,8,9], format=formatter)
+    
+    
+# Helper to plot convolution with one filter
+def visualise_conv(image, model):
+    print(image.shape)
+    image_batch = np.expand_dims(image, axis=0)
+    conv_image = model.predict(image_batch)    
+    conv_image = np.squeeze(conv_image, axis=0)
+    conv_image = conv_image.reshape(conv_image.shape[:2])
+    print(conv_image.shape)
+    plt.imshow(conv_image, cmap="jet")
