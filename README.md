@@ -1,7 +1,5 @@
 # Deep Learning Bootcamp
 
-# Deep Learning Bootcamp
-
 - Introduction, Multi-layer Perceptron
 - Neural Network Building Blocks
 - Convolution Neural Network
