@@ -1,11 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 import tensorflow as tf
 import keras
 #from tensorflow.examples.tutorials.mnist import input_data
 from keras.datasets import fashion_mnist
 import os
-
 
 # Helper to get the labels for each class of Fashion Mnist
 def fashion_mnist_label(): 
@@ -183,3 +183,59 @@ def visualise_conv(image, model):
     conv_image = conv_image.reshape(conv_image.shape[:2])
     print(conv_image.shape)
     plt.imshow(conv_image, cmap="jet")
+    
+
+def plot3d(X,Y,Z):
+    fig = plt.figure(figsize=(8,8))
+    ax = fig.add_subplot(111, projection='3d')
+    ax.plot_surface(X, Y, Z, color='y')
+    plt.show()
+    
+
+def fashion_mnist_preprocess():
+    
+    # get data
+    (x_train, y_train), (x_test, y_test) = fashion_mnist.load_data()
+    x_train.shape, y_train.shape, x_test.shape, y_test.shape
+    
+    # input image dimensions
+    img_rows, img_cols = 28, 28
+    
+    # reshape to channel_last format
+    x_train = x_train.reshape(x_train.shape[0], img_rows, img_cols, 1)
+    x_test = x_test.reshape(x_test.shape[0], img_rows, img_cols, 1)
+    input_shape = (img_rows, img_cols, 1)
+    
+    # normalize data
+    x_train_normalize = x_train / 255
+    x_test_normalize = x_test / 255
+    
+    # convert class vectors to binary class matrices
+    y_train_class = keras.utils.to_categorical(y_train, num_classes)
+    y_test_class = keras.utils.to_categorical(y_test, num_classes)
+    
+    return (x_train_normalize, y_train_class), (x_test_normalize, y_test_class)
+
+def plot_metric(history):
+    acc = history.history['acc']
+    val_acc = history.history['val_acc']
+    loss = history.history['loss']
+    val_loss = history.history['val_loss']
+
+    epochs = range(1, len(acc) + 1)
+
+    plt.plot(epochs, acc, 'bo', label='Training acc')
+    plt.plot(epochs, val_acc, 'b', label='Validation acc')
+    plt.title('Training and validation accuracy')
+    plt.ylim(0,1)
+    plt.legend()
+
+    plt.figure()
+
+    plt.plot(epochs, loss, 'bo', label='Training loss')
+    plt.plot(epochs, val_loss, 'b', label='Validation loss')
+    plt.title('Training and validation loss')
+    plt.ylim(0,1)
+    plt.legend()
+
+    plt.show()
