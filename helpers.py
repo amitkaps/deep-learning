@@ -1,6 +1,10 @@
 import numpy as np
+import pandas as pd
+
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
+import altair as alt
+
 import tensorflow as tf
 import keras
 #from tensorflow.examples.tutorials.mnist import input_data
@@ -17,7 +21,10 @@ def fashion_mnist_label():
 
 # Helpers to create a sprite image in the Embedding Projector
 def create_sprite(images):
-    """Returns a sprite image consisting of images passed as argument. Images should be count x width x height"""
+    """
+    Returns a sprite image consisting of images passed as argument. 
+    Images should be count x width x height
+    """
     if isinstance(images, list):
         images = np.array(images)
     img_h = images.shape[1]
@@ -238,3 +245,20 @@ def plot_metrics(history):
     plt.legend()
     
     plt.show()
+    
+    
+    
+def get_word_vectors(tokenizer):
+    words = tokenizer.word_index
+    word_df = pd.DataFrame(columns = ["word", "index"])
+    for key, index in words.items():
+        word_df.loc[index] = [key, index]
+    df = pd.get_dummies(word_df, prefix="", prefix_sep="", columns=["index"])
+    return df
+
+def get_sentence_vectors(sentences, tokenizer, mode="binary"):
+    matrix = tokenizer.texts_to_matrix(sentences, mode=mode)
+    df = pd.DataFrame(matrix)
+    df.drop(columns=0, inplace=True)
+    df.columns = tokenizer.word_index
+    return df
