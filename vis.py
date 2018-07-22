@@ -136,6 +136,7 @@ def predict(proba, actual, labels):
     df["actual"] = df.index
     df.loc[df.index == actual, "actual"] = True
     df.loc[df.index != actual, "actual"] = False
+    predicted_class = df.proba.idxmax()
     
     chart = alt.Chart(df).mark_bar().encode(
         alt.X('proba:Q', scale=alt.Scale(domain=[0,1])), 
@@ -145,6 +146,6 @@ def predict(proba, actual, labels):
     ).properties(
         width = 350,
         height = 350,
-        title = "Prediction: " + labels[actual]
+        title = "Prediction: " + labels[predicted_class]
     )
     return chart
