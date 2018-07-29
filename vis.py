@@ -5,6 +5,9 @@ import altair as alt
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
+from keras.preprocessing.image import ImageDataGenerator
+
+
 # Helper to get the labels for each class of Fashion Mnist
 def fashion_mnist_label(): 
     labels = {
@@ -51,10 +54,10 @@ def imshow_unique(X, y, labels):
     plt.figure(figsize = (16,7))
     for i in u:
         plt.subplot(2,5,i+1)
-        plt.imshow(X[i], cmap="gray")
-        plt.title(labels[y[i]])
+        plt.imshow(X[indices[i]], cmap="gray")
+        plt.title(labels[y[indices[i]]])
         plt.axis('off')
-
+        
 # Create a sprite from the numpy dataset
 def imshow_sprite(X):
     """
@@ -149,3 +152,53 @@ def predict(proba, actual, labels):
         title = "Prediction: " + labels[predicted_class]
     )
     return chart
+
+
+def show_images(images, labels):
+    """
+    Shows the set of batch image output from a numpy input
+    
+    images : A set of images with count * width * height * channel
+    index: An index for the label for the categorical images
+    
+    """
+    num = len(images)
+    columns = 5
+    rows = num//5
+    i = 0
+    plt.figure(figsize = (16,7))
+    for img in images:
+        plt.subplot(rows,columns,i+1)
+        plt.imshow(img)
+        label = "label=" + str(labels[i])
+        plt.title(label)
+        plt.axis('off')
+        i = i + 1
+        
+def show_single_image_gen(gen, image, num):
+    """
+    Shows the set of image augmented images for a single image
+    
+    gen: generator object for image augemtation
+    image: image to be augmented
+    num: number of augmented images
+    
+    """
+    image_array = np.expand_dims(image, axis=0)
+    gen.fit(image_array)
+    samples = gen.flow(image_array)
+    
+    images = samples.next()
+    for i in range(num-1):
+        img = samples.next()
+        images = np.r_[images, img]
+    
+    columns = 5
+    rows = num//5
+    i = 0
+    plt.figure(figsize = (16,7))
+    for img in images:
+        plt.subplot(rows,columns,i+1)
+        plt.imshow(img)
+        plt.axis('off')
+        i = i + 1 

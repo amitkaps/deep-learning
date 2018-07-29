@@ -17,9 +17,9 @@ Notebook Overviews
 - **004**: Convolution Neural Network - Fashion MNIST
 - **005**: Transfer Learning - Fashion MNIST
 - **006**: Data Augmentation - Fashion MNIST
-- **007**: Convolution Neural Network - Dosa/No Dosa
-- **008**: Transfer Learning - Dosa/No Dosa
-- **009**: Data Augmentation - Dosa/No Dosa
+- **007**: MLP & CNN - Dosa/No Dosa
+- **008**: Data Augmentation - Dosa/No Dosa
+- **009**: Transfer Learning - Dosa/No Dosa
 - **010**: Theory & Concept - Natural Language Processing
 - **011**: Pre-Trained Embedding - NLP
 - **012**: Recurrent Neural Network - Toxic Classification

@@ -1,7 +1,7 @@
 # Ignore these files
 /data
 /logs
-
+__MACOSX
 
 # Created by https://www.gitignore.io/api/macos,python,jupyternotebook
 
