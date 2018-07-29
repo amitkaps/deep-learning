@@ -1,12 +1,28 @@
 # Deep Learning Bootcamp
 
-- Introduction, Multi-layer Perceptron
-- Neural Network Building Blocks
-- Convolution Neural Network
-- Transfer Learning
-- Word Embedding
-- Recurrent Neural Network
-- Deployment
+The objective for the Deep Learning bootcamp is to ensure that the participants have enough theory and practical concepts of building a deep learning solution in the space of computer vision and natural language processing. Post the bootcamp, all the participants would be familiar with the following key concepts and would be able to apply them to a problem.
+
+**Key Deep Learning Concept**
+- **Theory**: DL Motivation, Back-propagation, Activation
+- **Paradigms**: Supervised, Unsupervised
+- **Models**: Architecture, Pre-trained Models (Transfer Learning)
+- **Methods**: Perceptron, Convolution, Pooling, Dropouts, Recurrent, LSTM
+- **Process**: Setup, Encoding, Training, Serving
+- **Tools**: python-data-stack, keras, tensorflow
+
+Notebook Overviews
+- **001**: Theory - Deep Learning, Universal Approximation, MLP for tabular data
+- **002**: Multi-layer Perceptron - Fashion MNIST
+- **003**: Theory - Convolution Neural Network
+- **004**: Convolution Neural Network - Fashion MNIST
+- **005**: Transfer Learning - Fashion MNIST
+- **006**: Data Augmentation - Fashion MNIST
+- **007**: Convolution Neural Network - Dosa/No Dosa
+- **008**: Transfer Learning - Dosa/No Dosa
+- **009**: Data Augmentation - Dosa/No Dosa
+- **010**: Theory & Concept - Natural Language Processing
+- **011**: Pre-Trained Embedding - NLP
+- **012**: Recurrent Neural Network - Toxic Classification
 
 ## Resources
 
