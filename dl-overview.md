@@ -111,7 +111,7 @@ Core Layers
 | MultiClass     | softmax | Categorical Crossentropy   |
 | MultiClass Multi Label     | sigmoid   | Binary Crossentropy    |
 | Regression     | None   | Mean Square Error   |
-| Regression (0-1)    | sigmoid   | MSE or Binary CrossEntropy Square Error   |
+| Regression (0-1)    | sigmoid   | MSE or Binary Crossentropy   |
 
 ---
 
@@ -120,3 +120,65 @@ Core Layers
 - SGD
 - RMSProp
 - Adam
+
+
+---
+
+# Best Practices
+
+## Pre-processing
+- **Normalize** / **Whiten** your data
+- **Scale** your data appropriately (for outlier)
+- Handle **Missing Values** - Make them 0 (Ensure it exists in training)
+- Create **Training & Validation Split**
+- **Stratified** split for multi-class data
+- **Shuffle** data for non-sequence data. Careful for sequence!!
+
+## General Architecture
+- Use **ADAM** Optimizer
+- Use **RELU** for non-linear activation
+- Add **Bias** to each layer
+- Use **Xavier** or **Variance-Scaling** initialisation
+- Refer to output layers activation & loss function guidance
+
+## Dense Architecture
+- No. of units reduce in deeper layer
+- Units are typically 2^n
+
+## CNN Architecture
+- Max 64 or 128 filters
+- Increase **Convoluton filters** as you go deeper in 32 -> 64 -> 128
+- Use **Pooling** to subsample: Makes image robust from translation, scaling, rotation
+
+
+## Learning Process
+- **Validation Process**
+    - Hold-Out Validation: Large Data
+    - K-Fold (Stratified) Validation: Smaller Data
+- **For Underfitting**
+  - Add more layers: **go Deeper**
+  - Make the layers bigger: **go wider**
+  - Train for more epochs
+- **For Overfitting**
+  - Get **more training data** (e.g. Actual or image augmentation)
+  - Reduce **Model Capacity**
+  - Add **weight regularisation** (e.g. L1, L2)
+  - Add **Dropouts**
+  - 
+
+
+---
+
+## Supervised Learning
+- **Classification**: e.g. Image, Text, Speech, Language Translation
+- **Sequence generation**: Given a picture, predict a caption describing it. 
+- **Syntax tree prediction**: Given a sentence, predict its decomposition into a syntax tree.
+- **Object detection**: Given a picture, draw a bounding box around certain objects inside the picture. 
+- **Image segmentation**: Given a picture, draw a pixel-level mask on a specific object.
+
+---
+
+## Other Learning
+- **Auto-encoder**: 
+- **Generative Adversial Network**: Images
+- **Reinforcement Learning**: Self-Driving Car, Robots, Education
