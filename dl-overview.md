@@ -31,7 +31,7 @@ _**Getting Started with Image & Text**_
 
 - **Supervised**: Regression, Classification, ...
 - Unsupervised: Dimensionality Reduction, Clustering, ...
-- Semi-supervised
+- Self-supervised
 - Reinforcement
 
 ---
@@ -126,6 +126,8 @@ Core Layers
 
 # Best Practices
 
+---
+
 ## Pre-processing
 - **Normalize** / **Whiten** your data
 - **Scale** your data appropriately (for outlier)
@@ -134,12 +136,16 @@ Core Layers
 - **Stratified** split for multi-class data
 - **Shuffle** data for non-sequence data. Careful for sequence!!
 
+---
+
 ## General Architecture
 - Use **ADAM** Optimizer
 - Use **RELU** for non-linear activation
 - Add **Bias** to each layer
 - Use **Xavier** or **Variance-Scaling** initialisation
 - Refer to output layers activation & loss function guidance
+
+---
 
 ## Dense Architecture
 - No. of units reduce in deeper layer
@@ -150,6 +156,7 @@ Core Layers
 - Increase **Convoluton filters** as you go deeper in 32 -> 64 -> 128
 - Use **Pooling** to subsample: Makes image robust from translation, scaling, rotation
 
+---
 
 ## Learning Process
 - **Validation Process**

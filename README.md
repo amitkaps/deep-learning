@@ -21,8 +21,11 @@ Notebook Overviews
 - **008**: Data Augmentation - Dosa/No Dosa
 - **009**: Transfer Learning - Dosa/No Dosa
 - **010**: Theory & Concept - Natural Language Processing
-- **011**: Pre-Trained Embedding - NLP
-- **012**: Recurrent Neural Network - Toxic Classification
+- **011**: Recurrent Neural Network - Toxic Classification
+- **012**: Convolution - 1D - Toxic Classification
+- **013**: Pre-Trained Embedding - Words - Toxic Classification
+- **014**: Pre-Trained Embedding - Sentences - Toxic Classification
+- **015**: Generating Text
 
 ## Resources
 
