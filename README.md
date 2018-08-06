@@ -25,11 +25,11 @@ Notebook Overviews
 - **012**: Convolution - 1D - Toxic Classification
 - **013**: Pre-Trained Embedding - Words - Toxic Classification
 - **014**: Pre-Trained Embedding - Sentences - Toxic Classification
-- **015**: Generating Text
 
 ## Resources
 
 1. Overview Decks
+  - [Overview]()
   - [For Image](https://speakerdeck.com/amitkaps/deep-learning-for-image)
   - [For NLP](https://www.slideshare.net/amitkaps/deep-learning-for-nlp-69972908) 
 
