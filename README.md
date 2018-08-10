@@ -40,7 +40,7 @@ The objective for the Deep Learning bootcamp is to ensure that the participants 
 
 
 ## External References
-These are reference materials which have excellent explanations - visual, interactive, math or code driven in text, video or notebook format - about Machine Learning and Deep Learning. We have found them useful in our own learning journey. We hope they will help you in yours.
+These are reference materials which have excellent explanations - visual, interactive, math or code driven in text, video, app or notebook format - about Machine Learning and Deep Learning. We have found them useful in our own learning journey. We hope they will help you in yours.
 
 - Basics: Python, Numpy and Math
   - Don't know **python**. Start with a crash course from @anadology using [Python Practice Book](https://anandology.com/python-practice-book/), (*Text, Code*)
