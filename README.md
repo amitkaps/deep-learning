@@ -56,29 +56,43 @@ These are reference material which have good explanations - visual, interactive,
   - Want a **visual understanding of Deep Learning**. Start with these four videos by @3blue1brown on [Neural Networks](https://www.youtube.com/watch?v=aircAruvnKk&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi). *(Video, Visual)*
   - 
   - How can **neural networks compute any function**? Read this visual proof by Michael Nielson in [Chapter 4 in Neural Network and Deep Learning](http://neuralnetworksanddeeplearning.com/chap4.html). *(Text, Visual)*
-  
-  
-- Challenges in Learning
-    - ...
-    - What are is the learning 
+  - Why are simple MLP networks **hard to train**? Here is a good explanation on the concept of *vanishing* and *exploding* gradients in Deep Learning - [Chapter 5](http://neuralnetworksanddeeplearning.com/chap5.html). *(Text, Visual & Code)*
 
 
-- Optimization
+- Learning & Optimization
+  - What is this **Back-Propogation** stuff? Here is easy to understand visual explanation on [The Calculus of Backpropogation](http://colah.github.io/posts/2015-08-Backprop/). *(Text, Visual & Math)*
   - How do **optimizer works**? Start with this fantastic interactive post on Ben Fredrickson on [Numerical Optimization](https://www.benfrederickson.com/numerical-optimization/). *(Text, Visual & Interactive)*
-  - What are all these **optimizers**? Read through this exhaustive explanation on SGD and its variants by Sebatian Ruder on [Optimizing Gradient Descent(http://ruder.io/optimizing-gradient-descent/). *(Text, Visual + Math)
-  - Interested in recent improvements in optimisation. Check out more recents article by Sebastian Ruder on [DL Optimisation Trends](http://ruder.io/deep-learning-optimization-2017/) and Fast.ai post on [Adam Weight Decay](http://www.fast.ai/2018/07/02/adam-weight-decay/)
-  - What is **momentum in SGD**?
+  - What are all these **optimizers**? Read through this exhaustive explanation on SGD and its variants by Sebatian Ruder on [Optimizing Gradient Descent(http://ruder.io/optimizing-gradient-descent/). *(Text, Visual & Math)*
+  - Want to learn more about **SGD**? Read through this interactive article on momentum in SGD - [Why Momentum really works](https://distill.pub/2017/momentum/). *(Text, Interative)*
+  - Interested in recent improvements in optimisation. Check out more recents article by Sebastian Ruder on [DL Optimisation Trends](http://ruder.io/deep-learning-optimization-2017/) and Fast.ai post on [Adam Weight Decay](http://www.fast.ai/2018/07/02/adam-weight-decay/). *(Text, Math)*
+  
 
 - Convolution Neural Network
   - ..
   - ...
 
-- Recurrent Neural Network
+- Embeddings
+  - Confused by all these **word embedding** stuff? Read
+  
+  - Need to deep dive more in the **math of word embedding**?Start with this four posts by Sebastian Ruder on word embeddings: [Part 1 - Basic](http://ruder.io/word-embeddings-1/), [Part 2 - Softmax](http://ruder.io/word-embeddings-2/),  [Part 3 - Word2Vec](http://ruder.io/secret-word2vec/)., [Part 5 - Recent Trends](http://ruder.io/word-embeddings-2017/index.html) *(Text, Math)*
+  - ...
 
+- Recurrent Neural Network
+  - What are **RNNs and LSTMs**? Start with this visual unpacking of what is happening within the LSTM node - [Understanding LSTMs](http://colah.github.io/posts/2015-08-Understanding-LSTMs/). **(Text, Visual)**
+  - ...
+  - ...
+  
+- Practical Lessons
+  - 
+  - Doing Text Classification?
+  - Doing more exotic NLP stuff? Then check out this article on current [Best approaches for Deep Learning in NLP] (http://ruder.io/deep-learning-nlp-best-practices/). *(Text, Math)*
 
 - Visualisation
- - 
- - 
+  - Want to **visualise your learning**? Use the [Tensorboard](https://www.tensorflow.org/guide/summaries_and_tensorboard) callback to start doing that from your notebooks. *(App, Interactive)*
+  - Want to understand why all these **dimensionality reduction** approaches? Start by reading the interactive piece by Christopher Olah on [Visualising MNIST](http://colah.github.io/posts/2014-10-Visualizing-MNIST/) *(Text, Visual & Interactive)*
+  - Want to look at **your embeddings in 2D/3D**? Check out the [embedding projector](https://projector.tensorflow.org/) and you can run it on your own data using TensorBoard. *(App, Interactive)*
+  - What is the **Neural Network really learning in images**? Check out these articles on [Feature Visualisation](https://distill.pub/2017/feature-visualization/) and [The Building Block of Interpretibility](https://distill.pub/2018/building-blocks/). *(Text & Notebooks, Visual & Interactive)*
 
-- More Notebooks to play with
+- Continued (Your) Learning on (Deep) Learning
   - Want to find more notebooks on Deep Learning?. Explore the collections of interactive ML examples at [Seedbank](https://tools.google.com/seedbank/)
+  - More of a book person?
