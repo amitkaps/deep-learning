@@ -4,9 +4,9 @@ The objective for the Deep Learning bootcamp is to ensure that the participants 
 
 **Key Deep Learning Concept**
 - **Theory**: DL Motivation, Back-propagation, Activation
-- **Paradigms**: Supervised, Unsupervised
-- **Models**: Architecture, Pre-trained Models (Transfer Learning)
-- **Methods**: Perceptron, Convolution, Pooling, Dropouts, Recurrent, LSTM
+- **Paradigms**: Supervised Learning
+- **Models**: Sequential Models, Pre-trained Models (Transfer Learning)
+- **Methods**: Perceptron, Dense, Convolution, Pooling, Dropouts, Recurrent, LSTM, Embedding
 - **Process**: Setup, Encoding, Training, Serving
 - **Tools**: python-data-stack, keras, tensorflow
 
@@ -39,7 +39,7 @@ The objective for the Deep Learning bootcamp is to ensure that the participants 
   - [How to learn Deep Learning in 6 months](https://towardsdatascience.com/how-to-learn-deep-learning-in-6-months-e45e40ef7d48) by @bargava
 
 
-### External References
+## External References
 These are reference materials which have excellent explanations - visual, interactive, math or code driven in text, video or notebook format - about Machine Learning and Deep Learning. We have found them useful in our own learning journey. We hope they will help you in yours.
 
 - Basics: Python, Numpy and Math
